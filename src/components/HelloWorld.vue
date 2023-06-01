@@ -1,43 +1,47 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
+<script>
+export default {
+  data() {
+    return {
+      messages: [],
+      count: 0
+    }
+  },
+  methods: {
+    addMessage() {
+      this.count++
+      this.messages.push(this.newMessage)
+      this.newMessage = ''
+    }
+  },
+  
+}
 </script>
 
 <template>
-  <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
-    <h3>
-      You’ve successfully created a project with
-      <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
-      <a href="https://vuejs.org/" target="_blank" rel="noopener">Vue 3</a>.
-    </h3>
-  </div>
+
+  <v-card title="Afficher un message">
+    <v-divider class="border-opacity-25 ms-3 mb-1" color="info" width="200px"></v-divider>
+    <v-card-subtitle class="mb-3"> Nombre de click : {{ count }} </v-card-subtitle>
+    <!-- <v-divider class="border-opacity-25 ms-3" color="info" width="200px"></v-divider> -->
+    <h4 v-for="message in messages" :key="message" class="ms-4 mb-1">
+      {{ message }}
+    </h4>
+    <v-divider class="border-opacity-25 ms-3 mt-4 mb-2" color="info" width="200px"></v-divider>
+    <v-card-actions>
+      <v-text-field type="text" v-model="newMessage" label="Ecrire un message" density="compact" />
+      <v-btn
+        @click="addMessage"
+        icon="mdi-plus"
+        size="small"
+        density="compact"
+        color="success"
+        elevation="2"
+        variant="outlined"
+        v-slot:append
+        class="mb-4 ms-2"
+      />
+    </v-card-actions>
+  </v-card>
 </template>
 
-<style scoped>
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  top: -10px;
-}
-
-h3 {
-  font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
-}
-</style>
+<style scoped></style>
