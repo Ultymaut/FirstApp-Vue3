@@ -1,13 +1,22 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import Calculate from '@/views/Calculate.vue'
+import Message from '@/views/Message.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: HomeView
+      //route classqiue
+      path: '/Calculate',
+      name: 'Calculate',
+      component: Calculate
+    },
+
+    {
+      path: '/Message/:id',
+      name: 'Message',
+      component: Message
     }
   ]
 })

@@ -9,25 +9,12 @@ export default {
     }
   },
   components: {
-    // HelloWorld,
     Button
   },
   methods: {
     calculate() {
       this.number = evaluate(this.number)
     }
-    // addNumber(number){
-    //     return this.value = number + number
-    // },
-    // subsctractNumber(number){
-    //     return this.value = number - number
-    // },
-    // divideNumber(number){
-    //     return this.value = number / number
-    // },
-    // multiplyNumber(number){
-    //     return this.value = number * number
-    // },
   }
 }
 </script>
@@ -44,7 +31,6 @@ export default {
         <v-text-field>{{ number || 0 }}</v-text-field>
       </div>
       <form @submit.prevent="calculate">
-        <!-- <HelloWorld /> -->
         <div class="d-center" style="height: 40px">
           <v-btn type="button" @click.stop="number += '7'"> 7</v-btn>
           <v-btn type="button" @click.stop="number += '8'"> 8</v-btn>
